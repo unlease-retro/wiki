@@ -6,7 +6,7 @@
 
 ## Table of Contents
 
-* [ES6](/es6/readme.md)
-* [Immutable](/immutable/readme.md)
-* [React](/react/readme.md)
-* [Redux](/redux/readme.md)
+* [ES6](/javascript/es6/readme.md)
+* [Immutable](/javascript/immutable/readme.md)
+* [React](/javascript/react/readme.md)
+* [Redux](/javascript/redux/readme.md)
