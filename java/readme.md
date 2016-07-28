@@ -3,5 +3,5 @@
 
 ## index
 
-* [collections](collections/readme.md)
+* [Collections](collections/readme.md)
 * [Spring](spring/readme.md)
