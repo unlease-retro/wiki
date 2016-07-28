@@ -6,7 +6,7 @@ By using **JWT** and **separated Auth and Resource server**, there's **no need**
 
 Using OAuth2 gives us the possibility to use any language / framework as resource server as long as it has OAuth2 and JWT support to develop our backend endpoints  
 
-## Hopefully the example below still works :ramen:
+## Hopefully the examples below still works :ramen:
 
 - [Auth server example](https://github.com/csueaq/springBoot-oauth-jwt-tokenStore-authServer)
 - [resource server example](https://github.com/csueaq/springBoot-oauth-jwt-tokenStore-resourceServer)
