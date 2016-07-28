@@ -64,6 +64,10 @@ Once you have **server.jks** and **public key** ,
 - There is **no way** to revoke a valid access token until it expires, so use **short ttl** for access token and **long ttl** for refresh token which we can prevent new access token to be issued for refreshing access token
 - It is better to **lower the permission (scope)** after a certain time when access token is first issued (can be achieved when refreshing access token), so we can re-verify user identity on some sensitive actions if they logged in long time ago
 
+#### User DAO object
+
+- Using separated Auth and Resource server will ended up **duplicating** the User DAO object, which is very annoying when adding new field to it if directly use JPA **save** method to process update, as it will **overwrite** the entire document/row. Therefore, it is best to use **explicit update** on the field to avoid constantly keep both DAO objects in sync.
+
 ## Reference
 
 - [Key generation](https://beku8.wordpress.com/2015/03/31/configuring-spring-oauth2-with-jwt-asymmetric-rsa-keypair/) 
