@@ -61,7 +61,7 @@ Once you have **server.jks** and **public key** ,
 
 #### JWT Token
 
-- There is **no way** to revoke a valid access token until it expired, so use **short ttl** for access token and **long ttl** for refresh token which we can prevent new access token to be issued for refreshing access token
+- There is **no way** to revoke a valid access token until it expires, so use **short ttl** for access token and **long ttl** for refresh token which we can prevent new access token to be issued for refreshing access token
 - It is better to **lower the permission (scope)** after a certain time when access token is first issued (can be achieved when refreshing access token), so we can re-verify user identity on some sensitive actions if they logged in long time ago
 
 ## Reference
