@@ -5,8 +5,8 @@ Using OAuth2 gives us the possibility to use any language / framework as resourc
 
 ## Hopefully the example below still works :ramen:
 
--[Auth server example](https://github.com/csueaq/springBoot-oauth-jwt-tokenStore-authServer)
--[resource server example](https://github.com/csueaq/springBoot-oauth-jwt-tokenStore-resourceServer)
+- [Auth server example](https://github.com/csueaq/springBoot-oauth-jwt-tokenStore-authServer)
+- [resource server example](https://github.com/csueaq/springBoot-oauth-jwt-tokenStore-resourceServer)
 
 ## Generate RSA key pair 
 
