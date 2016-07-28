@@ -199,7 +199,7 @@ public class DaoConverter implements Converter<Dao, DaoResponse> {
 
 ```
 
-Or, you can also write a private method to do this, as the convert method can not throw Exception , but you might want to throw up sometime 
+Or, you can also write a private method to do this, as the **convert** method can not throw Exception , but you might want to throw up sometime 
 
 ```java
 public SomeService implements ISomeService {
