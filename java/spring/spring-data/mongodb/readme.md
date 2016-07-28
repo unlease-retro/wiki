@@ -72,7 +72,7 @@ public class ExampleRepositoryCustomImpl implements ExampleRepositoryCustom {
 
 ```java
 @Service
-public SomeService implements ISomeService {
+public class SomeService implements ISomeService {
   @Autowired
   ExampleRepository exampleRepository;
 
@@ -172,7 +172,7 @@ public interface ISomeService {
 Then, you do this :u5272: (i'm joking :expressionless:)
 
 ```java
-public SomeService implements ISomeService {
+public class SomeService implements ISomeService {
   @Autowired
   DaoRepository daoRepository  
   Page<DaoResponse> getAllTheShit() {
@@ -202,7 +202,7 @@ public class DaoConverter implements Converter<Dao, DaoResponse> {
 Or, you can also write a private method to do this, as the **convert** method can not throw Exception , but you might want to throw up sometime 
 
 ```java
-public SomeService implements ISomeService {
+public class SomeService implements ISomeService {
   @Autowired
   DaoRepository daoRepository  
   Page<DaoResponse> getAllTheShit() {
