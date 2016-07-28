@@ -69,6 +69,7 @@ public class ExampleRepositoryCustomImpl implements ExampleRepositoryCustom {
 
 ```
 - use it in some service
+
 ```java
 @Service
 public SomeService implements ISomeService {
@@ -81,4 +82,3 @@ public SomeService implements ISomeService {
   /// and exampleRepository.findById
 }
 ```
--
