@@ -2,9 +2,9 @@
 
 We use **[OAuth2](http://oauth.net/2/)** with **[JWT](https://jwt.io/)** at unlease :pineapple: to achieve stateless and scalable user authentication and authorization. The implementation is using **[Spring Security OAuth2](http://projects.spring.io/spring-security-oauth/docs/oauth2.html)** 
 
-Using OAuth2 gives us the possibility to use any language / framework as resource server as long as it has OAuth2 and JWT support to develop our backend endpoints  
-
 By using **JWT** and **separated Auth and Resource server**, there's **no need** for Resource Server to verify access token with Auth Server, which makes the whole user authentication and authorization very light weight and stateless.
+
+Using OAuth2 gives us the possibility to use any language / framework as resource server as long as it has OAuth2 and JWT support to develop our backend endpoints  
 
 ## Hopefully the example below still works :ramen:
 
