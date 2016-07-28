@@ -1,4 +1,4 @@
-# Oauth2
+# OAuth2
 
 We use **[OAuth2](http://oauth.net/2/)** with **[JWT](https://jwt.io/)** at unlease :pineapple: to achieve stateless and scalable user authentication and authorization. The implementation is using **[Spring Security OAuth2](http://projects.spring.io/spring-security-oauth/docs/oauth2.html)** 
 
