@@ -126,3 +126,75 @@ This is a really rare case, but some times it can be required to perform some qu
             return mongoTemplate.count(query, SomeClass.class);
     }
 ```
+
+## return a customized response obeject in Pagable query  
+
+Sometimes you want to return a response object which has a different structure than you DAO object in your service, for reasons like the frontend devs like for structured JSON or whatever.
+
+Assume you have a DAO object like this:
+
+```java
+@Document
+public class Dao {
+    // some field
+}
+
+```
+
+And a response object like this:
+
+
+```java
+public class DaoResponse {
+    // some field
+}
+
+```
+
+And repo like this :
+
+```java
+public interface DaoRepository extends MongoRepository<Dao, String> {
+  Page<Dao> findAll(Pageable pageable);
+}
+
+```
+
+And ..... you have an interface asking for this :confounded:
+
+```java
+public interface ISomeService {
+  Page<DaoResponse> getAllTheShit();
+}
+
+```
+
+Then, you do this :u5272: (i'm joking :expressionless:)
+
+```java
+public SomeService implements ISomeService {
+  @Autowired
+  DaoRepository daoRepository  
+  Page<DaoResponse> getAllTheShit() {
+    Pageable pageable = new PageRequest(page, 20);
+    Page result = daoRepository.findAll(pageable)
+    DaoConverter converter = new DaoConverter();
+    return result.map(converter);
+  }
+}
+
+```
+
+Where the DaoConverter looks like:
+ 
+```java
+public class DaoConverter implements Converter<Dao, DaoResponse> {
+
+    public DaoResponse convert(Dao dao) {
+        DaoResponse response = new DaoResponse();
+        // ... do whatever you want
+        return response;
+    }
+}
+
+```
