@@ -127,9 +127,9 @@ This is a really rare case, but some times it can be required to perform some qu
     }
 ```
 
-## return a customized response obeject in Pagable query  
+## Return a customized response obeject in Pagable query  
 
-Sometimes you want to return a response object which has a different structure than you DAO object in your service, for reasons like the frontend devs like for structured JSON or whatever.
+Sometimes you want to return a response object which has a different structure than you DAO object in your service, for reasons like the frontend devs like more structured JSON or whatever.
 
 Assume you have a DAO object like this:
 
@@ -185,7 +185,7 @@ public SomeService implements ISomeService {
 
 ```
 
-Where the DaoConverter looks like:
+Where the **DaoConverter** looks like:
  
 ```java
 public class DaoConverter implements Converter<Dao, DaoResponse> {
