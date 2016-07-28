@@ -82,3 +82,47 @@ public SomeService implements ISomeService {
   /// and exampleRepository.findById
 }
 ```
+
+## Query the same field twice using mongoTemplate
+
+This is a really rare case, but some times it can be required to perform some query
+> please note that the example is not those cases that we have to query the same field in such way, but just to show how it would work if it is required
+
+- this won't work
+
+```java
+    @Override
+    public Long sadlyThisDoesNotWorkQuery(String id) {
+        Query query = new Query();
+
+        Criteria criteria =
+                where("someField")
+                    .is(true)
+                .and("someField")
+                    .exists(true)
+                .and("id")
+                    .is(id);
+
+        query.addCriteria(criteria);
+        return mongoTemplate.count(query, SomeClass.class);
+    }
+```
+- this works
+
+```java
+    @Override
+    public Long ohYeahThisWorksQuery(String id) {
+        Query query = new Query();
+        Criteria criteria = new Criteria().andOperator(
+             where("someField")
+                    .exists(true)
+                .and("id")
+                    .is(id),
+                where("someField")
+                    .is(true)
+         );
+    
+            query.addCriteria(criteria);
+            return mongoTemplate.count(query, SomeClass.class);
+    }
+```
