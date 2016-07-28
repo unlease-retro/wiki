@@ -27,6 +27,7 @@ public Example {
 }
 ```
 - Create custom MongoRepository first
+**The naming is very important, (http://stackoverflow.com/questions/17035419/spring-data-mongodb-custom-implementation-propertyreferenceexception)**
 
 ```java
 public interface ExampleRepositoryCustom {
