@@ -198,3 +198,31 @@ public class DaoConverter implements Converter<Dao, DaoResponse> {
 }
 
 ```
+
+Or, you can also write a private method to do this, as the convert method can not throw Exception , but you might want to throw up sometime 
+
+```java
+public SomeService implements ISomeService {
+  @Autowired
+  DaoRepository daoRepository  
+  Page<DaoResponse> getAllTheShit() {
+  
+    Pageable pageable = new PageRequest(page, 20);
+    Page result = daoRepository.findAll(pageable)
+    return convert(result,pageable);
+    
+  }
+  
+  private Page<DaoResponse> convert(Page page, Pageable pageable) {
+  
+    List<DaoResponse> DaoResponseList = new ArrayList<>();
+    page.getContent().forEach(x -> {
+        // ... add stuff to DaoResponseList
+    });
+
+    return new PageImpl<>(DaoResponseList,pageable,page.getTotalElements());
+
+  }
+}
+
+```
