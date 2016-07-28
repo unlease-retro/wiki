@@ -97,13 +97,13 @@ Containers should:
 - Map state to props
 - Map dispatch to props (instead of `this.props.dispatch`)
 
-#### Example
+#### Examples
 ```js
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import * as DomainActions from '../../../actionCreator/domain'
+import * as DomainActions from '../../actionCreator/domain'
 
 export class Container extends Component {
 
@@ -117,10 +117,10 @@ export class Container extends Component {
 
   render () {
 
-    const { domain: { name } } = this.props
+    const { domain: { someProp } } = this.props
 
     return (
-      <h1>{ name }</h1>
+      <h1>{ someProp }</h1>
     )
 
   }
@@ -129,6 +129,42 @@ export class Container extends Component {
 
 export default connect(state => ({
     domain: state.domain
+  }),
+  dispatch => ({
+    domainActions: bindActionCreators(DomainActions, dispatch)
+  })
+)(Container)
+```
+
+##### Container with Selectors:
+```js
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+
+import * as DomainActions from '../../actionCreator/domain'
+import * as DomainSelectors from '../../selectors/domain'
+
+export class Container extends Component {
+
+  render () {
+
+    const { domain: { someProp } } = this.props
+
+    return (
+      <h1>{ someProp }</h1>
+    )
+
+  }
+
+}
+
+// NOTE: selectors can be nested (and namespaced) to expose multiple parts of the store to component
+export default connect(createStructuredSelector({
+    domain: createStructuredSelector({
+      someProp: DomainSelectors.getSomeProp,
+    })
   }),
   dispatch => ({
     domainActions: bindActionCreators(DomainActions, dispatch)
