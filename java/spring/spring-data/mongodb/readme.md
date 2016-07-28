@@ -3,9 +3,9 @@
 
 ## Custom Repository
 
-Spring-data mongoDB provide a very nice QueryDSL interface which can be used in most of the cases, however some times when querys gets to complicated, it is more readable and maintainable to use mongoTemplate instead.
+Spring-data mongoDB provide a very nice QueryDSL interface which can be used in most of the cases, however some times when querys gets complicated, it is more readable and maintainable to use mongoTemplate instead.
 
-In order to have the benefit of both QueryDSL and mongoTemplate, we could extend custom repository on top of MongoRepository.
+In order to have the benefit of both QueryDSL and mongoTemplate, we could make MongoRepository extends a custom repository.
 
 #### Example
 
@@ -26,7 +26,7 @@ public Example {
   // .... getter and setters
 }
 ```
-- Create custom MongoRepository first
+- Create custom Repository first
 .. **The naming is very important, (http://stackoverflow.com/questions/17035419/spring-data-mongodb-custom-implementation-propertyreferenceexception)**
 
 ```java
@@ -36,7 +36,7 @@ public interface ExampleRepositoryCustom {
 
 ```
 
-- Create your normal MongoRepository
+- Create your standard Repository
 
 ```java
 
@@ -48,7 +48,7 @@ public interface ExampleRepository extends MongoRepository<Example, String>,Exam
 }
 
 ```
-- Implement custom MongoRepository
+- Implement custom Repository
 
 ```java
 public class ExampleRepositoryCustomImpl implements ExampleRepositoryCustom {
@@ -85,7 +85,7 @@ public SomeService implements ISomeService {
 
 ## Query the same field twice using mongoTemplate
 
-This is a really rare case, but some times it can be required to perform some query
+This is a really rare case, but some times it might be required to perform such query
 > please note that the example is not those cases that we have to query the same field in such way, but just to show how it would work if it is required
 
 - this won't work
