@@ -52,6 +52,12 @@ Once you have **server.jks** and **public key** ,
 
 - you need to configure your **Resource Server** to use a **public key** to verify access token, if you use **Spring Boot 1.3+** , then put it in [application.yml](https://github.com/csueaq/springBoot-oauth-jwt-tokenStore-resourceServer/blob/master/src/main/resources/application.yml)
 
+## Gotcha (Spring Security OAuth2 return code)
+
+-  401 when **access token expired** and **cannot convert access token to JSON** and **no access token found**
+-  400 when **bad credentials** i.e wrong password :expressionless:
+-  403 sometimes can't remember when :disappointed:
+
 ## Reference
 
 - [Key generation](https://beku8.wordpress.com/2015/03/31/configuring-spring-oauth2-with-jwt-asymmetric-rsa-keypair/) 
