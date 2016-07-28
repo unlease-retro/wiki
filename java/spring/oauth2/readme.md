@@ -52,11 +52,17 @@ Once you have **server.jks** and **public key** ,
 
 - you need to configure your **Resource Server** to use a **public key** to verify access token, if you use **Spring Boot 1.3+** , then put it in [application.yml](https://github.com/csueaq/springBoot-oauth-jwt-tokenStore-resourceServer/blob/master/src/main/resources/application.yml)
 
-## Gotcha (Spring Security OAuth2 return code)
+## Gotcha 
 
+#### Spring Security OAuth2 return code
 -  401 when **access token expired** and **cannot convert access token to JSON** and **no access token found**
 -  400 when **bad credentials** i.e wrong password :expressionless:
 -  403 sometimes can't remember when :disappointed:
+
+#### JWT Token
+
+- There is **no way** to revoke a valid access token until it expired, so use **short ttl** for access token and **long ttl** for refresh token which we can prevent new access token to be issued for refreshing access token
+- It is better to **lower the permission (scope)** after a certain time when access token is first issued (can be achieved when refreshing access token), so we can re-verify user identity on some sensitive actions if they logged in long time ago
 
 ## Reference
 
