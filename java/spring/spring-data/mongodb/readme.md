@@ -56,7 +56,7 @@ public class ExampleRepositoryCustomImpl implements ExampleRepositoryCustom {
    MongoTemplate mongoTemplate;
 
    @Override
-   public void someMethod(String id, Boolean visible) {
+   public void myCustomQuery(String id, Boolean visible) {
        Update update = new Update();
        update.set("visible",visible);
        mongoTemplate.updateFirst(
@@ -77,7 +77,7 @@ public SomeService implements ISomeService {
   ExampleRepository exampleRepository;
 
   /// then you can use all the Standard and custom method under the same injection
-  /// exampleRepository.someMethod
+  /// exampleRepository.myCustomQuery
   /// exampleRepository.findByVisibleIsTrue
   /// and exampleRepository.findById
 }
