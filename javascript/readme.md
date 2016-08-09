@@ -10,3 +10,4 @@
 * [Immutable](/javascript/immutable/readme.md)
 * [React](/javascript/react/readme.md)
 * [Redux](/javascript/redux/readme.md)
+* [Testing](/javascript/testing/readme.md)
