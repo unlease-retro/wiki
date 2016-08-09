@@ -1,5 +1,13 @@
 # Redux
 
+* [Constants](#constants)
+* [Action Types](#action-types)
+* [Action Creators](#action-creators)
+* [Reducers](#reducers)
+* [Selectors](#Selectors)
+* [Containers](#containers)
+* [Resources](#resources)
+
 ## Constants
 
 Constants should:
@@ -96,6 +104,7 @@ export const getSomeComputedProp = createSelector([ getSomeProp ], (someProp) =>
 Containers should:
 - Map state to props
 - Map dispatch to props (instead of `this.props.dispatch`)
+- Not include markup or styles
 
 #### Examples
 ```js
