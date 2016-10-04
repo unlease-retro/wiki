@@ -93,10 +93,20 @@ Selectors should:
 import { createSelector } from 'reselect'
 import { name } from '../constants/domain'
 
-export const getAll = state => state[name]
-export const getSomeProp = state => state[name].get('someProp')
+const getAll = state => state[name]
+const getSomeProp = state => state[name].get('someProp')
 
-export const getSomeComputedProp = createSelector([ getSomeProp ], (someProp) => someProp + 1)
+const getSomeComputedProp = createSelector([ getSomeProp ], (someProp) => someProp + 1)
+
+// NOTE: selectors can be also nested (and namespaced) using `createStructuredSelector` to expose multiple parts of the store to component
+export default {
+  all: getAll,
+  someProp: getSomeProp,
+  someComputedProp: getSomeComputedProp,
+  domain: createStructuredSelector({
+    someProp: getSomeProp,
+  }),
+}
 ```
 
 ## Containers
@@ -153,13 +163,13 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
 import * as DomainActions from '../../actionCreator/domain'
-import * as DomainSelectors from '../../selectors/domain'
+import DomainSelectors from '../../selectors/domain'
 
 export class Container extends Component {
 
   render () {
 
-    const { domain: { someProp } } = this.props
+    const { domain: { someProp }, someComputedProp } = this.props
 
     return (
       <h1>{ someProp }</h1>
@@ -169,12 +179,9 @@ export class Container extends Component {
 
 }
 
-// NOTE: selectors can be nested (and namespaced) to expose multiple parts of the store to component
-export default connect(createStructuredSelector({
-    domain: createStructuredSelector({
-      someProp: DomainSelectors.getSomeProp,
-    })
-  }),
+
+export default connect(
+  createStructuredSelector({ ...DomainSelectors }),
   dispatch => ({
     domainActions: bindActionCreators(DomainActions, dispatch)
   })
